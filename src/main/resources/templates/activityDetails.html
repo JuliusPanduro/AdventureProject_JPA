@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+<!-- Activity Grid-->
+<body id="page-top">
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Opret Aktivitet</h2>
+            <h3 class="section-subheading text-muted">Udfyld felterne for den pågældende aktivitet.</h3>
+        </div>
+        <form class="form" id="activitycreation">
+            <input hidden name="activityID" value="0">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Aktivitet ID</label>
+                <input type="text" name="activityID" class="form-control" id="formGroupExampleInput"
+                       th:value="${activity.activityID}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput1">Navn</label>
+                <input type="text" name="activityName" class="form-control" id="formGroupExampleInput1"
+                       th:value="${activity.activityName}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Aldersgrænse</label>
+                <input type="text" name="ageLimit" class="form-control" id="formGroupExampleInput2"
+                       th:value="${activity.ageLimit}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Højdegrænse</label>
+                <input type="text" name="heightLimit" class="form-control" id="formGroupExampleInput3"
+                       th:value="${activity.heightLimit}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Varighed</label>
+                <input type="text" name="timeLimit" class="form-control" id="formGroupExampleInput4"
+                       th:value="${activity.timeLimit}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput5">Beskrivelse af aktivitet</label>
+                <input type="text" name="description" class="form-control" id="formGroupExampleInput5"
+                       th:value="${activity.description}"
+                       required readonly>
+            </div>
+            <br>
+
+        </form>
+        <a class="theButtons" th:href="@{'/createBookingByID/' + ${activity.activityID}}">
+            <button class="btn btn-primary" style="margin-right: 10px">Opret booking</button>
+        </a>
+    </div>
+</section>
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="js/ButtonScript.js"></script>
+
+
+</html>

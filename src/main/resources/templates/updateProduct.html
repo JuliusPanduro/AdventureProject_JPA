@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+<body id="page-top">
+
+
+<!-- Activity Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Opdater aktiviteter</h2>
+            <h3 class="section-subheading text-muted">Se, tilføj og ret i AdventureXP's aktiviteter.</h3>
+        </div>
+        <form class="form" id="productupdate" onsubmit="return updateProduct()" action="/updateProduct"
+              method="POST">
+            <input type="hidden" name="productID" th:value="${product.productID}">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Aktivitet</label>
+                <input type="text" name="productName" class="form-control" id="formGroupExampleInput"
+                       th:value="${product.productName}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Aldersgrænse</label>
+                <input type="text" name="productPrice" class="form-control" id="formGroupExampleInput2"
+                       th:value="${product.productPrice}">
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Opdater</a></button>
+            <button type="reset" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Fortryd</a></button>
+        </form>
+    </div>
+</section>
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</html>

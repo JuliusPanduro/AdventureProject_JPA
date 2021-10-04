@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+<!-- Activity Grid-->
+<body id="page-top">
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Opret Booking</h2>
+            <h3 class="section-subheading text-muted">Udfyld felterne for den pågældende booking.</h3>
+        </div>
+        <form class="form" id="bookingcreation" onsubmit="return createBooking()" action="/createBooking"
+              method="POST">
+            <input hidden name="bookingId" value="0">
+            <div class="form-group">
+                <label for="formGroupExampleInput1">Aktivitets ID</label>
+                <input type="text" name="activityID" class="form-control" id="formGroupExampleInput1"
+                       th:value="${activityID}"
+                       required readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Medarbejder</label>
+                <input type="text" name="employeeName" class="form-control" id="formGroupExampleInput"
+                       placeholder="Indtast ansvarlig medarbejder"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput5">Kunde navn</label>
+                <input type="text" name="customerName" class="form-control" id="formGroupExampleInput5"
+                       placeholder="Indtast kundens fulde navn" required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Telefonnummer</label>
+                <input type="text" name="customerTelephone" class="form-control" id="formGroupExampleInput2"
+                       placeholder="Indtast kundens telefonnummer"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Dato</label>
+                <input type="text" name="startDate" class="form-control" id="formGroupExampleInput3"
+                       placeholder="Indtast dato"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Tid</label>
+                <input type="text" name="timeStart" class="form-control" id="formGroupExampleInput4"
+                       placeholder="Indtast tidspunkt for booking"
+                       required>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Opret</a></button>
+            <button type="reset" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Fortryd</a></button>
+        </form>
+    </div>
+</section>
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</html>

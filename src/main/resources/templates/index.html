@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+
+<body id="page-top">
+<!-- Activity Grid-->
+<title>Adventure XP - Forside</title>
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Aktiviteter</h2>
+            <h3 class="section-subheading text-muted">Se, tilføj og ret i AdventureXP's aktiviteter.</h3>
+        </div>
+
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Aktivitet</th>
+                <th scope="col">Aldersgrænse</th>
+                <th scope="col">Højdekrav</th>
+                <th scope="col">Tidsgrænse</th>
+                <th scope="col">Med forælder</th>
+                <th scope="col">Rediger</th>
+                <th scope="col">Slet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activities :${activities}"><br>
+                <th scope="row"><a class="portfolio-link" th:href="@{'/activityDetails/' + ${activities.activityID}}"
+                                   th:text="${activities.getActivityName}"></a></th>
+                <td th:text="${activities.getAgeLimit}"> Agelimit</td>
+                <td th:text="${activities.getHeightLimit}"> HeightLimit</td>
+                <td th:test="${activities.getTimeLimit}"></td>
+                <td>
+                    <a th:href="@{'/updateActivity/' + ${activities.activityID}}">
+                        <button type="button" class="btn btn-primary" style="margin-right: 10px">Rediger aktivitet
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/deleteActivity/' + ${activities.activityID}}">
+                        <button type="button" class="btn btn-primary" style="margin-right: 10px">Slet aktivitet</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/createActivity">
+            <button type="button" class="btn btn-primary" style="margin-right: 10px">Tilføj aktivitet
+            </button>
+        </a>
+    </div>
+</section>
+
+
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+<body id="page-top">
+
+<!-- Masthead-->
+<!-- Activity Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Søg Booking</h2>
+            <h3 class="section-subheading text-muted">Indtast søge kriterier for filtreret liste</h3>
+        </div>
+        <div>
+            <form action="/searchBooking" method="post">
+                <input type="text" placeholder="Booking ID" name="bookingID" }/>
+                <input type="text" placeholder="Aktivitets ID" name="activityID" }/>
+                <input type="text" placeholder="Aktivitets navn" name="activityName" }/><br>
+                <input type="text" placeholder="Medarbejder navn" name="employeeName" }/>
+                <input type="text" placeholder="Kunde navn" name="customerName" }/><br>
+                <input type="text" placeholder="Kunde tlf" name="customerPhoneNumber"/>
+                <input type="text" placeholder="Dato" name="startDate"/>
+                <input type="text" placeholder="Dato fra" name="dateFrom"/><br>
+                <input type="text" placeholder="Dato til" name="dateTo" }/>
+                <button type="submit">Søg</button>
+            </form>
+            <br>
+            <input type="text" id="user-input" onkeyup="userSearch()"
+                   placeholder="Søg efter: BookingID, aktivitet, medarbejder, kundenavn, tlf. nr eller dato">
+
+            <table class="table table-dark" id="receipt-table">
+                <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Aktivitet</th>
+                    <th>Medarbejder</th>
+                    <th>Kundenavn</th>
+                    <th>Kunde tlf</th>
+                    <th>Dato</th>
+                    <th>Tid</th>
+                    <th>Rediger</th>
+                    <th>Slet</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bookingList: ${bookingList}">
+                    <td th:text="${bookingList.bookingId}"/>
+                    <td th:text="${bookingList.activityName}"/>
+                    <td th:text="${bookingList.employeeName}"/>
+                    <td th:text="${bookingList.customerName}"/>
+                    <td th:text="${bookingList.customerTelephone}"/>
+                    <td th:text="${bookingList.startDate}"/>
+                    <td th:text="${bookingList.timeStart}"/>
+                    <td>
+                        <a th:href="@{'/updateBooking/' + ${bookingList.bookingId}}">
+                            <button type="button" class="btn btn-primary">Rediger</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/deleteBooking/' + ${bookingList.bookingId}}">
+                            <button type="button" class="btn btn-primary">Slet</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+<!--search funktion, filtrer tabel ud fra user-input-->
+<!--Input er brugerens input, filter tjekker textContent, og fjerner row hvis i input ikke passer med søgning-->
+<!--td, td1 osv. Er de columns man kan søge på, hvor [i] er column nummerering-->
+<!--Vi har fået metoeden fra https://www.w3schools.com/howto/howto_js_filter_table.asp og har ændret den, så det passer med vores tabel-->
+<script>
+    function userSearch() {
+        var input, filter, table, tr, td, td1, td2, td3, td4, td5, i;
+        input = document.getElementById("user-input");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("receipt-table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) { <!--tjekker hver td og om de skal kunne filtreres ud fra -->
+            td = tr[i].getElementsByTagName("td")[0];
+            td1 = tr[i].getElementsByTagName("td")[1];
+            td2 = tr[i].getElementsByTagName("td")[2];
+            td3 = tr[i].getElementsByTagName("td")[3];
+            td4 = tr[i].getElementsByTagName("td")[4];
+            td5 = tr[i].getElementsByTagName("td")[5];
+            td6 = tr[i].getElementsByTagName("td")[6];
+            if (td) {
+                if ((td.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td1.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td2.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td3.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td4.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td5.textContent.toUpperCase().indexOf(filter) > -1) ||
+                    (td6.textContent.toUpperCase().indexOf(filter) > -1)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</html>

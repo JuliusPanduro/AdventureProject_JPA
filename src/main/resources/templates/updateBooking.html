@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+<link rel="stylesheet" th:href="@{css/styles.css}">
+<header th:replace="fragments/header.html"></header>
+
+<body id="page-top">
+<!-- Activity Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Opdater booking</h2>
+            <h3 class="section-subheading text-muted">Se, tilføj og ret i booking.</h3>
+        </div>
+        <form class="form" id="bookingUpdate" action="/updateBooking"
+              method="POST">
+            <span th:text="'Booking ID: '+${booking.bookingId}"/>
+            <input hidden name="bookingId" th:value="${booking.bookingId}">
+            <div class="form-group">
+                <label for="formGroupExampleInput1">Aktivitet</label>
+                <input type="text" name="activityID" class="form-control" id="formGroupExampleInput1"
+                       th:value="${booking.activityID}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Medarbejder</label>
+                <input type="text" name="employeeName" class="form-control" id="formGroupExampleInput2"
+                       th:value="${booking.employeeName}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Kundenavn</label>
+                <input type="text" name="customerName" class="form-control" id="formGroupExampleInput3"
+                       th:value="${booking.customerName}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Kunde tlf. Nr</label>
+                <input type="text" name="customerTelephone" class="form-control" id="formGroupExampleInput4"
+                       th:value="${booking.customerTelephone}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput5">Dato</label>
+                <input type="text" name="startDate" class="form-control" id="formGroupExampleInput5"
+                       th:value="${booking.startDate}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput6">Tidspunkt</label>
+                <input type="text" name="timeStart" class="form-control" id="formGroupExampleInput6"
+                       th:value="${booking.timeStart}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Opret</a></button>
+            <button type="reset" class="btn btn-primary" style="margin-right: 10px">
+                <a class="theButtons">Fortryd</a></button>
+        </form>
+    </div>
+</section>
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</html>

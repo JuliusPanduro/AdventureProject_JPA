@@ -2,6 +2,7 @@ package edu.kea.adventure_project.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -33,7 +34,8 @@ public class Booking {
     @Column
     private String timeStart;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @Nullable
     @JoinColumn(name = "activityID")
     private Activity activity;
 

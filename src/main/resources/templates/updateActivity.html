@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html"></head>
-<link rel="stylesheet" th:href="@{css/styles.css}">
 <header th:replace="fragments/header.html"></header>
+
+
 <!-- Activity Grid-->
 <body id="page-top">
 <section class="page-section bg-light" id="portfolio">
@@ -15,7 +15,7 @@
         <form class="form" id="activityupdate" onsubmit="return updateActivity()" action="/updateActivity"
               method="POST">
             <input type="hidden" name="activityID" th:value="${activity.activityID}">
-           <div class="form-group">
+            <div class="form-group">
                 <label for="formGroupExampleInput">Aktivitet</label>
                 <input type="text" name="activityName" class="form-control" id="formGroupExampleInput"
                        th:value="${activity.activityName}">
@@ -50,7 +50,9 @@
     </div>
 </section>
 </body>
+
 <footer th:replace="fragments/footer.html"></footer>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

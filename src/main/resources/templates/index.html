@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html"></head>
-<link rel="stylesheet" th:href="@{css/styles.css}">
 <header th:replace="fragments/header.html"></header>
 
 
@@ -22,7 +21,7 @@
                 <th scope="col">Aldersgrænse</th>
                 <th scope="col">Højdekrav</th>
                 <th scope="col">Tidsgrænse</th>
-                <th scope="col">Med forælder</th>
+                <th scope="col">Beskrivelse</th>
                 <th scope="col">Rediger</th>
                 <th scope="col">Slet</th>
             </tr>
@@ -33,10 +32,11 @@
                                    th:text="${activities.getActivityName}"></a></th>
                 <td th:text="${activities.getAgeLimit}"> Agelimit</td>
                 <td th:text="${activities.getHeightLimit}"> HeightLimit</td>
-                <td th:test="${activities.getTimeLimit}"></td>
+                <td th:text="${activities.getTimeLimit}"></td>
+                <td th:text="${activities.getDescription}"></td>
                 <td>
                     <a th:href="@{'/updateActivity/' + ${activities.activityID}}">
-                        <button type="button" class="btn btn-primary" style="margin-right: 10px">Rediger aktivitet
+                        <button type="button" class="btn btn-primary">Rediger aktivitet
                         </button>
                     </a>
                 </td>
@@ -55,8 +55,8 @@
     </div>
 </section>
 
-
 </body>
+
 <footer th:replace="fragments/footer.html"></footer>
 
 <!-- Bootstrap core JS-->

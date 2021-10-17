@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html"></head>
-<link rel="stylesheet" th:href="@{css/styles.css}">
 <header th:replace="fragments/header.html"></header>
 
 <body id="page-top">
@@ -47,7 +46,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="bookingList: ${bookingList}">
-                    <td th:text="${bookingList.bookingId}"/>
+                    <td th:text="${bookingList.bookingID}"/>
                     <td th:text="${bookingList.activityName}"/>
                     <td th:text="${bookingList.employeeName}"/>
                     <td th:text="${bookingList.customerName}"/>

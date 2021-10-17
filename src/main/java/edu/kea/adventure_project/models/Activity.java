@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Christian og Joachim
@@ -30,8 +30,8 @@ public class Activity {
     @Column
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "activity")
-    private List<Booking> bookings;
+     @OneToMany(mappedBy = "activity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Booking> bookings;
 
     public Activity(Long activityID, String activityName, int ageLimit, int heightLimit, int timeLimit, String description) {
         this.activityID = activityID;
@@ -41,4 +41,6 @@ public class Activity {
         this.timeLimit = timeLimit;
         this.description = description;
     }
+
+
 }

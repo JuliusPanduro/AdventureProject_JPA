@@ -24,12 +24,12 @@ public class ProductController {
     @GetMapping("/updateProduct/{productID}")
     public String updateProduct(@PathVariable("productID") Long productID, Model model) {
         model.addAttribute("product", productService.readProductById(productID));
-        return "/updateProduct";
+        return "updateProduct.html";
     }
 
     @GetMapping("/createProduct")
     public String createProduct() {
-        return "/createProduct";
+        return "createProduct.html";
     }
 
     @PostMapping("/createProduct")
@@ -42,7 +42,7 @@ public class ProductController {
     public String fetchAll(Model model){
         List<Product> productList = productService.findAll();
         model.addAttribute("products", productList);
-        return "/products";
+        return "products.html";
     }
 
 

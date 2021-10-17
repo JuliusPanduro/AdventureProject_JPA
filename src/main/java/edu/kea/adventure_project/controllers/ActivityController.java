@@ -30,12 +30,12 @@ public class ActivityController {
     @GetMapping("/activityDetails/{activityID}")
     public String readActivityDetails(@PathVariable Long activityID, Model model){
         model.addAttribute("activity", activityService.readActivityByID(activityID));
-        return "/activityDetails";
+        return "activityDetails.html";
     }
 
     @GetMapping("/createActivity")
     public String createActivity() {
-        return "/createActivity";
+        return "createActivity.html";
     }
 
     @PostMapping("/createActivity")
@@ -47,7 +47,7 @@ public class ActivityController {
     @GetMapping("/updateActivity/{activityID}")
     public String updateActivity(@PathVariable("activityID") Long activityID, Model model) {
         model.addAttribute("activity", activityService.readActivityByID(activityID));
-        return "/updateActivity";
+        return "updateActivity.html";
     }
 
     @PostMapping("/updateActivity")
